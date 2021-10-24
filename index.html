@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html>
     <head>
         <meta charset="utf-8">
@@ -9,36 +7,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="Programming.css">
     </head>
-    <body>
-        <style></style>
-        <div style="text-align: center;">
-            <h1><div class="Title">Where to next?</div></h1>
+    <body style="background-color: khaki;">
+        <div class="quiz-container">
+            <div class="Title">The Anxiety Quiz</div>
             <div id="question" class="question"></div>
-            <div id= "options">
-            <p id="question"></p>
-            <p><input id="Opt1" type="radio" name="answer" value="1">
-                <label class="OptAnswer1">
-                <span id = "answerPos1"></span></label></p>
-            <p><input id="Opt2" type="radio" name="answer" value="2">
-                <label for="OptAnswer2">
-                <span id = "answerPos2"></span></label></p>
-            <p><input id="Opt3" type="radio" name="answer" value="3">
-                <label for="OptAnswer3">
-                <span id = "answerPos3"></span></label></p>
-            <p><input id="Opt4" type="radio" name="answer" value="4">
-                <label for="OptAnswer4">
-                <span id = "answerPos4"></span></label></p>
-            </div>
-            <div class="controls">
+            <label class="option">
+                <input id= "Opt1" type="radio" value="1" />
+                <span class="answerPos1"></span>
+            </label>
+            <label class="option">
+                <input id= "Opt2" type="radio" value="2" />
+                <span class="answerPos2"></span>
+            </label>
+            <label class="option">
+                <input id="Opt3" type="radio" value="3" />
+                <span class="answerPos3"></span>
+            </label>
+            <label class="option">
+                <input id= "Opt4" type="radio" value="4" />
+                <span class="answerPos4"></span>
+            </label>
+            <div class="buttons">
                 <button class="previous">Previous</button>
                 <button class="next">Next</button>
             </div>
-        
-
         </div>
-        
-
-        
         <script src="Programming.js" async defer></script>
     </body>
 </html>
+
