@@ -90,3 +90,19 @@ const questions = [
         "answer4Total": "4"
     }
 ]
+  let currentQuestion = 0;
+  let score = [];
+  let selectedAnswersData = [];
+  const totalQuestions =questions.length;
+  
+  const container = document.querySelector('.quiz-container');
+  const questionEl = document.querySelector('.question');
+  const option1 = document.querySelector('.answerPos1');
+  const option2 = document.querySelector('.answerPos2');
+  const option3 = document.querySelector('.answerPos3');
+  const option4 = document.querySelector('.answerPos4');
+  const nextButton = document.querySelector('.next');
+  const previousButton = document.querySelector('.previous');
+  const restartButton = document.querySelector('.restart');
+  const result = document.querySelector('.result');
+
