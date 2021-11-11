@@ -1,6 +1,6 @@
 const questions = [
     { 
-        "Question1": "Age range?", 
+        "question": "Age range?", 
         "answer1": "10-12",
         "answer1Total": "1",
         "answer2": "12-14",
@@ -11,7 +11,7 @@ const questions = [
         "answer4Total": "4"
     },
     {
-        "Question2": "How often do you feel excessively worried?",
+        "question": "How often do you feel excessively worried?",
         "answer1": "Never",
         "answer1Total": "1",
         "answer2": "Sometimes",
@@ -20,9 +20,9 @@ const questions = [
         "answer3Total": "3",
         "answer4": "All the time",
         "answer4Total": "4"
-    }
+    },
     {
-        "Question3":  "How often do you find it difficult to focus on schoolwork?",
+        "question":  "How often do you find it difficult to focus on schoolwork?",
         "answer1": "Never",
         "answer1Total": "1",
         "answer2": "Sometimes",
@@ -32,9 +32,9 @@ const questions = [
         "answer4": "All the time",
         "answer4Total": "4"
 
-    }
+    },
     { 
-        "Question4": "How often are you not in control or cannot stop worrying?",
+        "question": "How often are you not in control or cannot stop worrying?",
         "answer1": "Never",
         "answer1Total": "1",
         "answer2": "Sometimes",
@@ -44,9 +44,42 @@ const questions = [
         "answer4": "All the time",
         "answer4Total": "4"
 
-    }
+    },
     {
-        "Question5": "How often do you find it hard to relax?",
+        "question": "How often do you find it hard to relax?",
+        "answer1": "Never",
+        "answer1Total": "1",
+        "answer2": "Sometimes",
+        "answer2Total": "2",
+        "answer3":"Quite Often",
+        "answer3Total": "3",
+        "answer4": "All the time",
+        "answer4Total": "4"
+    },
+    {
+        "question": "How often do you find that you're restless because it is hard to sit still?",
+        "answer1": "Never",
+        "answer1Total": "1",
+        "answer2": "Sometimes",
+        "answer2Total": "2",
+        "answer3":"Quite Often",
+        "answer3Total": "3",
+        "answer4": "All the time",
+        "answer4Total": "4"
+    },
+    {
+        "question": "How often do you become easily annoyed or irritable?",
+        "answer1": "Never",
+        "answer1Total": "1",
+        "answer2": "Sometimes",
+        "answer2Total": "2",
+        "answer3":"Quite Often",
+        "answer3Total": "3",
+        "answer4": "All the time",
+        "answer4Total": "4"
+    },
+    {
+        "question": "How often do you feel afraid that something awful might happen?",
         "answer1": "Never",
         "answer1Total": "1",
         "answer2": "Sometimes",
@@ -56,40 +89,9 @@ const questions = [
         "answer4": "All the time",
         "answer4Total": "4"
     }
-    {
-        "Question6": "How often do you find that you're restless because it is hard to sit still?",
-        "answer1": "Never",
-        "answer1Total": "1",
-        "answer2": "Sometimes",
-        "answer2Total": "2",
-        "answer3":"Quite Often",
-        "answer3Total": "3",
-        "answer4": "All the time",
-        "answer4Total": "4"
-    }
-    {
-        "Question7": "How often do you become easily annoyed or irritable?",
-        "answer1": "Never",
-        "answer1Total": "1",
-        "answer2": "Sometimes",
-        "answer2Total": "2",
-        "answer3":"Quite Often",
-        "answer3Total": "3",
-        "answer4": "All the time",
-        "answer4Total": "4"
-    }
-    {
-        "Question8": "How often do you feel afraid that something awful might happen?",
-        "answer1": "Never",
-        "answer1Total": "1",
-        "answer2": "Sometimes",
-        "answer2Total": "2",
-        "answer3":"Quite Often",
-        "answer3Total": "3",
-        "answer4": "All the time",
-        "answer4Total": "4"
-    }
-]
+  ];
+  
+  
   let currentQuestion = 0;
   let score = [];
   let selectedAnswersData = [];
@@ -105,8 +107,9 @@ const questions = [
   const previousButton = document.querySelector('.previous');
   const restartButton = document.querySelector('.restart');
   const result = document.querySelector('.result');
-
- function generateQuestions (index) {
+  
+  
+  function generateQuestions (index) {
       const question = questions[index];
       const option1Total = questions[index].answer1Total;
       const option2Total = questions[index].answer2Total;
@@ -165,9 +168,31 @@ const questions = [
               <p>8 - 16 - Mild Anxiety</p>
             
           </div>
+          <button class="restart">Restart Quiz</button>
+           `;
+          return;
       }
       generateQuestions(currentQuestion);
-      
+  }
+  //(after trialling): to load the previous question
+  function loadPreviousQuestion(){
+      currentQuestion--;
+      score.pop();
+      generateQuestions(currentQuestion);
+  }
+
+  //(after testing) to reset the quiz (in order to restart)
+  function resetQuiz (e) {
+      if(e.target.matches('button')){
+          //sets score back to 0 and array back to 0 (Q1)
+          currentQuestion = 0;
+          score = [];
+          
+          location.reload();
+      }
+  }
   generateQuestions(currentQuestion);
   nextButton.addEventListener('click', loadNextQuestion);
-
+  previousButton.addEventListener('click',loadPreviousQuestion);
+  result.addEventListener('click',resetQuiz);
+  
