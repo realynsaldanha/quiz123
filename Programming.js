@@ -1,14 +1,15 @@
+// array of questions 
 const questions = [
-    { 
+    { // (after testing): changed the score to zero because age should not count towards the score
         "question": "Age range?", 
         "answer1": "10-12",
-        "answer1Total": "1",
+        "answer1Total": "0",
         "answer2": "12-14",
-        "answer2Total": "2",
+        "answer2Total": "0",
         "answer3":"14-16",
-        "answer3Total": "3",
+        "answer3Total": "0",
         "answer4": "16-18",
-        "answer4Total": "4"
+        "answer4Total": "0"
     },
     {
         "question": "How often do you feel excessively worried?",
@@ -91,7 +92,7 @@ const questions = [
     }
   ];
   
-  
+  // defining variables 
   let currentQuestion = 0;
   let score = [];
   let selectedAnswersData = [];
@@ -108,7 +109,7 @@ const questions = [
   const restartButton = document.querySelector('.restart');
   const result = document.querySelector('.result');
   
-  
+  // to generate the questions from the array shown above
   function generateQuestions (index) {
       const question = questions[index];
       const option1Total = questions[index].answer1Total;
@@ -127,7 +128,7 @@ const questions = [
       option4.innerHTML = `${question.answer4}`
   }
   
-  
+  // after trialling : to not generate the next question unless an option has been selected
   function loadNextQuestion () {
       const selectedOption = document.querySelector('input[type="radio"]:checked');
       
@@ -163,9 +164,9 @@ const questions = [
               <div class="summary">
               <h1>Summary of your results</h1>
               <p>Match your score to these assesments below:</p>
-              <p>24 - 32- Severe Anxiety</p>
-              <p>17 - 23 - Moderate Anxiety</p>
-              <p>8 - 16 - Mild Anxiety</p>
+              <p>22 - 28- Severe Anxiety</p>
+              <p>14 - 21 - Moderate Anxiety</p>
+              <p>7 - 13 - Mild Anxiety</p>
             
           </div>
           <button class="restart">Restart Quiz</button>
@@ -187,11 +188,16 @@ const questions = [
           //sets score back to 0 and array back to 0 (Q1)
           currentQuestion = 0;
           score = [];
-          
+
           location.reload();
       }
   }
   generateQuestions(currentQuestion);
   nextButton.addEventListener('click', loadNextQuestion);
+  
+  //(after trialling): when the button has been clicked go to the previous question 
   previousButton.addEventListener('click',loadPreviousQuestion);
+
+  //(after testing): when the button has been clicked restart the quiz 
   result.addEventListener('click',resetQuiz);
+  
